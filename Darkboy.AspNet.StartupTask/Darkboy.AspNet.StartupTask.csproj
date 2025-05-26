@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>true</IsPackable>
+    <PackageId>Darkboy.AspNet.StartupTask</PackageId>
+    <Version>0.0.3</Version>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <LangVersion>default</LangVersion>
+    <AssemblyName>Darkboy.AspNet.StartupTask</AssemblyName>
+    <RootNamespace>Darkboy.AspNet.StartupTask</RootNamespace>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="readme.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="*.cs" PackagePath="src\%(RecursiveDir)%(Filename)%(Extension)" Visible="false"/>
+    <Content Include="build\*.props;build\*.targets" PackagePath="build\"/>
+  </ItemGroup>
+</Project>
