@@ -1,11 +1,15 @@
 param(
+    [Parameter(Mandatory)][string]$path,
     [Switch]$KeepVersion,
     [Parameter()][ValidateSet('major', 'minor', 'build')][string]$Increase = 'build'
 )
 
+$oldpath = Get-Location
+Set-Location $path
+
 if (-Not ($KeepVersion.IsPresent)) {
     $file = $( Get-ChildItem *.csproj )[0]
-    $regex = '(?<=Version>)(\d+)\.(\d+)\.(\d+)(?=<)'
+    $regex = '(?<=(?:File|Package|Assembly)?Version>)(\d+)\.(\d+)\.(\d+)(?=<)'
     $found = (Get-Content $file) | Select-String -Pattern $regex
 
     if ($Increase -Eq 'major') {
@@ -31,3 +35,5 @@ foreach ($file in $( Get-ChildItem .\bin\Release\*.nupkg )) {
     dotnet nuget push $file --source "nuget.org"
     Remove-Item -Path $file
 }
+
+Set-Location $oldpath

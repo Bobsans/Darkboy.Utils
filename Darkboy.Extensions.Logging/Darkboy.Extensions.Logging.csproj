@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>default</LangVersion>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <AssemblyName>Darkboy.Extensions.Logging</AssemblyName>
+    <RootNamespace>Darkboy.Extensions.Logging</RootNamespace>
+    <IsPackable>true</IsPackable>
+    <PackageId>Darkboy.Extensions.Logging</PackageId>
+    <Version>0.0.3</Version>
+    <Title>Darkboy.Extensions.Logging</Title>
+    <Authors>Darkboy</Authors>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.0"/>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="readme.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+</Project>
