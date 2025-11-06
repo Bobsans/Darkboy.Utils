@@ -32,7 +32,7 @@ if (-Not ($KeepVersion.IsPresent)) {
 dotnet pack --configuration Release
 
 foreach ($file in $( Get-ChildItem .\bin\Release\*.nupkg )) {
-    dotnet nuget push $file --source "nuget.org"
+    dotnet nuget push $file --source "https://www.nuget.org"
     Remove-Item -Path $file
 }
 

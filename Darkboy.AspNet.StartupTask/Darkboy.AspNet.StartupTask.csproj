@@ -9,7 +9,7 @@
     <RootNamespace>Darkboy.AspNet.StartupTask</RootNamespace>
     <IsPackable>true</IsPackable>
     <PackageId>Darkboy.AspNet.StartupTask</PackageId>
-    <Version>0.0.4</Version>
+    <Version>0.0.5</Version>
     <Title>Darkboy.AspNet.StartupTask</Title>
     <Authors>Darkboy</Authors>
     <PackageReadmeFile>readme.md</PackageReadmeFile>

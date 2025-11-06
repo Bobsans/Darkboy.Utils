@@ -1,4 +1,4 @@
-﻿namespace Darkboy.AspNet.StarupTask;
+﻿namespace Darkboy.AspNet.StartupTask;
 
 public interface IStartupTask {
     public int Order { get; }

@@ -18,7 +18,7 @@ class ExampleStartupTask : IStartupTask {
 ```csharp
 var builder = WebApplication.CreateBuilder();
 
-builder.AddStartupTask<ExampleStartupTask>();
+builder.Services.AddStartupTask<ExampleStartupTask>();
 
 var app = builder.Build();
 

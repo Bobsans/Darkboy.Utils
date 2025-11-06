@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Darkboy.AspNet.StarupTask;
+namespace Darkboy.AspNet.StartupTask;
 
 public static class Extension {
     public static async Task RunStartupTasksAsync(this IHost host) {
@@ -12,8 +12,7 @@ public static class Extension {
         }
     }
 
-    public static IHostApplicationBuilder AddStartupTask<T>(this IHostApplicationBuilder builder) where T : class, IStartupTask {
-        builder.Services.AddTransient<IStartupTask, T>();
-        return builder;
+    public static IServiceCollection AddStartupTask<T>(this IServiceCollection services) where T : class, IStartupTask {
+        return services.AddTransient<IStartupTask, T>();
     }
 }
