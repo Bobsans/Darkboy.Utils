@@ -11,10 +11,9 @@ public interface IStartupTask {
     public int Order { get; }
 
     /// <summary>
-    /// Executes the startup task asynchronously. This method is intended to be implemented
-    /// by classes adhering to the <see cref="IStartupTask"/> interface and serves as the entry
-    /// point for the task's execution logic.
+    /// Executes the startup task asynchronously with cancellation support.
     /// </summary>
+    /// <param name="cancellationToken">A token that can be used to cancel the task.</param>
     /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-    public Task RunAsync();
+    public Task RunAsync(CancellationToken cancellationToken);
 }

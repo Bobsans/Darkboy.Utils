@@ -9,13 +9,15 @@ Usage:
 class ExampleStartupTask : IStartupTask {
     public int Order => 0;
     
-    public async Task RunAsync() {
+    public async Task RunAsync(CancellationToken cancellationToken) {
         // do stuff
     }
 }
 
 class ExampleBackgroundStartupTask : IBackgroundStartupTask {
-    public async Task RunAsync() {
+    public int Order => 0;
+
+    public async Task RunAsync(CancellationToken cancellationToken) {
         // do stuff
     }
 }
@@ -29,7 +31,11 @@ builder.Services.AddBackgroundStartupTask<ExampleBackgroundStartupTask>();
 
 var app = builder.Build();
 
-await app.RunStartupTasksAsync();
+await app.RunStartupTasksAsync(CancellationToken.None);
 
 await app.RunAsync();
 ```
+
+Notes:
+- `IStartupTask` and `IBackgroundStartupTask` require `RunAsync(CancellationToken)` for graceful shutdown.
+- Background tasks are still started without blocking app startup and are executed in `Order`.
