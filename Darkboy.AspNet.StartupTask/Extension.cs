@@ -13,7 +13,7 @@ public static class Extension {
     /// <param name="host">An instance of <see cref="IHost"/> representing the application host.</param>
     /// <param name="cancellationToken">A token that can be used to cancel startup task execution.</param>
     /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-    public static async Task RunStartupTasksAsync(this IHost host, CancellationToken cancellationToken) {
+    public static async Task RunStartupTasksAsync(this IHost host, CancellationToken cancellationToken = default) {
         ArgumentNullException.ThrowIfNull(host);
 
         await RunImmediateTasksAsync(host, cancellationToken);
