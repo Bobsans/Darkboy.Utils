@@ -13,12 +13,19 @@ class ExampleStartupTask : IStartupTask {
         // do stuff
     }
 }
+
+class ExampleBackgroundStartupTask : IBackgroundStartupTask {
+    public async Task RunAsync() {
+        // do stuff
+    }
+}
 ```
 
 ```csharp
 var builder = WebApplication.CreateBuilder();
 
 builder.Services.AddStartupTask<ExampleStartupTask>();
+builder.Services.AddBackgroundStartupTask<ExampleBackgroundStartupTask>();
 
 var app = builder.Build();
 
